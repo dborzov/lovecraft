@@ -1,0 +1,20 @@
+[elements]
+  [elements.mountains]
+  Name = "Mountains"
+  description = "Mountains"
+
+  [elements.sea]
+  Name = "Sea"
+  description = "Sea"
+
+  [elements.earth]
+  Name = "Earth"
+  description = "Earth"
+
+  [elements.void]
+  Name = "Void"
+  description = "Infinite dreadful universe"
+
+  [elements.sun]
+  Name = "Sun"
+  description = "sun"
