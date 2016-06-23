@@ -1,0 +1,35 @@
+[elements]
+  [elements.plains]
+  Name = "Plains"
+  description = "Plains"
+  fraction = 5
+
+  [elements.mountains]
+  Name = "Mountains"
+  description = "Mountains"
+  fraction = 5
+
+  [elements.ocean]
+  Name = "Ocean"
+  description = "Ocean"
+  fraction = 5
+
+  [elements.earth]
+  Name = "Earth"
+  description = "Earth"
+  fraction = 1
+
+  [elements.void]
+  Name = "Void"
+  description = "Infinite dreadful universe"
+  fraction = 1
+
+  [elements.sun]
+  Name = "Sun"
+  description = "sun"
+  fraction = 1
+
+  [elements.storms]
+  Name = "Storms"
+  description = "Storms"
+  fraction = 3
