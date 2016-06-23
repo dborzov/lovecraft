@@ -6,6 +6,8 @@ import (
   "github.com/BurntSushi/toml"
 )
 
+const Size = 5
+
 // Element is a thing
 type element struct {
   Name        string
@@ -13,11 +15,16 @@ type element struct {
 }
 
 type World struct {
-  Elements map[string]element
+  Elements map[string]*element
+  Lands    [Size]*Land
 }
 
 func NewWorld() *World {
-  return new(World)
+  w := new(World)
+  for i := 0; i < Size; i++ {
+    w.Lands[i] = NewLand()
+  }
+  return w
 }
 
 func (w *World) Load(dirname string) error {
