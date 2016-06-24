@@ -34,7 +34,17 @@ func command(rawcmd string) {
     return
   }
   cmd := args[0]
+  args = args[1:]
   switch cmd {
+  case "action":
+    var landInx int
+    fmt.Sscanf(args[0], "%d", &landInx)
+    val, success := w.Action(landInx, args[1:])
+    if success {
+      fmt.Printf("%s: succesfully added to land # %v", val, landInx)
+    } else {
+      fmt.Printf("FAIL: can't add %s to land # %v", val, landInx)
+    }
   case "help":
     fmt.Printf(`
          ls - to list elements in lands
@@ -52,7 +62,7 @@ func command(rawcmd string) {
   case "elements":
     fmt.Printf("available elements:\n")
     for key, val := range w.Elements {
-      fmt.Printf("   %s: %v\n", key, val)
+      fmt.Printf("   %s: %#v\n", key, val)
     }
   case "transforms":
     fmt.Printf("available transformation rules:\n")

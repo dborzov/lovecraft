@@ -16,6 +16,7 @@ type element struct {
   Name        string
   Description string
   Combos      []string
+  Size        int
 }
 
 type World struct {
@@ -63,14 +64,25 @@ func (w *World) Load(dirname string) error {
   return nil
 }
 
-func (w *World) Action(pos int, elKeys []string) (failedElement string) {
+// Action applies a reaction among elements if there is one
+func (w *World) Action(pos int, elKeys []string) (result string, success bool) {
+  sort.Strings(elKeys)
   pos = pos % Size
   for _, val := range elKeys {
     if !w.Lands[pos].Check(val) {
-      return val
+      return val, false
     }
   }
-  return ""
+  result, ok := w.Transformations[strings.Join(elKeys, "+")]
+  if !ok {
+    return strings.Join(elKeys, "+"), false
+  }
+  el := w.Elements[result]
+  width := el.Size / 2
+  for cur := pos - width; cur <= pos+width; cur++ {
+    w.Lands[cur%Size].Add(result)
+  }
+  return result, true
 }
 
 // validate checks if the string is a valid elementptr (element pointer)
