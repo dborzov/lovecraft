@@ -18,6 +18,12 @@ starter = ["plains", "mountains", "ocean", "arctic", "ocean"]
   combos = ["storms+mountains"]
   size = 1
 
+  [elements.life]
+  Name = "Life"
+  description = "Life... finds a way"
+  combos = ["rivers+storms"]
+  size=5
+
   [elements.ocean]
   Name = "Ocean"
   description = "Ocean"

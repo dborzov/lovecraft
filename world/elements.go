@@ -77,10 +77,19 @@ func (w *World) Action(pos int, elKeys []string) (result string, success bool) {
   if !ok {
     return strings.Join(elKeys, "+"), false
   }
+
+  if w.Lands[pos].Check(result) {
+    return result, false
+  }
   el := w.Elements[result]
   width := el.Size / 2
   for cur := pos - width; cur <= pos+width; cur++ {
-    w.Lands[cur%Size].Add(result)
+    ind := cur % Size
+    if cur < 0 {
+      ind = Size + ind
+    }
+
+    w.Lands[ind].Add(result)
   }
   return result, true
 }
