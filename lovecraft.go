@@ -27,8 +27,15 @@ func main() {
 }
 
 func command(cmd string) {
-  if cmd == "exit" {
+  switch cmd {
+  case "transforms":
+    fmt.Printf("available transformation rules:\n")
+    for key, val := range w.Transformations {
+      fmt.Printf("   %s: %s\n", key, val)
+    }
+  case "exit":
     os.Exit(0)
+  default:
+    fmt.Printf("command \"%s\" is not recognized", cmd)
   }
-  fmt.Printf("command \"%s\" is not recognized", cmd)
 }

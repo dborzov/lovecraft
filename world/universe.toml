@@ -41,3 +41,4 @@ starter = ["plains", "mountains", "ocean", "arctic", "ocean"]
   Name = "Storms"
   description = "Storms"
   fraction = 3
+  combos = ["sun+ocean"]
