@@ -1,9 +1,11 @@
 package main
 
 import (
+  "bufio"
   "fmt"
   "log"
   "os"
+  "strings"
 
   "github.com/dborzov/lovecraft/world"
 )
@@ -18,16 +20,38 @@ func init() {
   }
 }
 func main() {
-  var cmd string
+  reader := bufio.NewReader(os.Stdin)
   for true {
     fmt.Printf("\n>")
-    fmt.Scanf("%s\n", &cmd)
-    command(cmd)
+    text, _ := reader.ReadString('\n')
+    command(text)
   }
 }
 
-func command(cmd string) {
+func command(rawcmd string) {
+  args := strings.Split(strings.TrimSuffix(rawcmd, "\n"), " ")
+  if len(args) == 0 {
+    return
+  }
+  cmd := args[0]
   switch cmd {
+  case "help":
+    fmt.Printf(`
+         ls - to list elements in lands
+         elements - to list available elements
+         transforms - to list available transformations
+         exit - to exit console
+      `)
+  case "ls":
+    fmt.Printf("available lands\n")
+    for i, val := range w.Lands {
+      fmt.Printf("   %v --> %v\n", i, val.ElList)
+    }
+  case "elements":
+    fmt.Printf("available elements\n")
+    for key, val := range w.Elements {
+      fmt.Printf("   %s: %v\n", key, val)
+    }
   case "transforms":
     fmt.Printf("available transformation rules:\n")
     for key, val := range w.Transformations {

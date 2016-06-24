@@ -7,26 +7,25 @@ type Planet struct {
 
 // Land contains elements
 type Land struct {
-  elements       []elementptr
-  elementsLookup map[elementptr]int
+  ElList []elementptr
+  elHash map[elementptr]int
 }
 
 func NewLand() *Land {
   return &Land{
-    elements:       []elementptr{},
-    elementsLookup: map[elementptr]int{},
+    ElList: []elementptr{},
+    elHash: map[elementptr]int{},
   }
 }
 
 // Add element to the land
 func (l *Land) Add(e elementptr) {
-  l.elements = append(l.elements, e)
-  l.elementsLookup[e] = len(l.elements) - 1
+  l.ElList = append(l.ElList, e)
+  l.elHash[e] = len(l.ElList) - 1
 }
 
 // Check if an element is present in the land
 func (l *Land) Check(e elementptr) bool {
-  _, ok := l.elementsLookup[e]
+  _, ok := l.elHash[e]
   return ok
-
 }
