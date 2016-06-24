@@ -1,3 +1,6 @@
+
+starter = ["plains", "mountains", "ocean", "arctic", "ocean"]
+
 [elements]
   [elements.plains]
   Name = "Plains"
@@ -12,6 +15,11 @@
   [elements.ocean]
   Name = "Ocean"
   description = "Ocean"
+  fraction = 5
+
+  [elements.arctic]
+  Name = "Arctic"
+  description = "Arctic wasteland of ice"
   fraction = 5
 
   [elements.earth]
