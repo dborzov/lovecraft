@@ -18,8 +18,6 @@ type element struct {
   Combos      []string
 }
 
-type elementptr string
-
 type World struct {
   Elements        map[string]*element
   Lands           [Size]*Land
@@ -65,7 +63,7 @@ func (w *World) Load(dirname string) error {
   return nil
 }
 
-func (w *World) Action(pos int, elKeys []elementptr) (failedElement elementptr) {
+func (w *World) Action(pos int, elKeys []string) (failedElement string) {
   pos = pos % Size
   for _, val := range elKeys {
     if !w.Lands[pos].Check(val) {
@@ -76,10 +74,10 @@ func (w *World) Action(pos int, elKeys []elementptr) (failedElement elementptr) 
 }
 
 // validate checks if the string is a valid elementptr (element pointer)
-func (w *World) validate(elptr string) (elementptr, error) {
+func (w *World) validate(elptr string) (string, error) {
   _, ok := w.Elements[elptr]
   if !ok {
     return "", fmt.Errorf("element ptr not recognized: %s", elptr)
   }
-  return elementptr(elptr), nil
+  return elptr, nil
 }

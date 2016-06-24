@@ -42,13 +42,15 @@ func command(rawcmd string) {
          transforms - to list available transformations
          exit - to exit console
       `)
+  case "hi":
+    fmt.Printf("hi, dude")
   case "ls":
-    fmt.Printf("available lands\n")
+    fmt.Printf("lands:\n")
     for i, val := range w.Lands {
       fmt.Printf("   %v --> %v\n", i, val.ElList)
     }
   case "elements":
-    fmt.Printf("available elements\n")
+    fmt.Printf("available elements:\n")
     for key, val := range w.Elements {
       fmt.Printf("   %s: %v\n", key, val)
     }
